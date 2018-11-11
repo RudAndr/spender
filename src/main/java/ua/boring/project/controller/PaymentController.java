@@ -20,8 +20,12 @@ import java.util.Optional;
 @RequestMapping("/payments")
 public class PaymentController {
 
+    private static PaymentService paymentService = null;
+
     @Autowired
-    static PaymentService paymentService;
+    public PaymentController(PaymentService paymentService) {
+        PaymentController.paymentService = paymentService;
+    }
 
     @GetMapping(value = "/find/{id}", headers = {"Accept=applications/json"})
     public ResponseEntity<Payment> getPayment(@PathVariable("id") long id) {
@@ -40,9 +44,9 @@ public class PaymentController {
         return paymentService.createPayment(paymentDto);
     }
 
-    @GetMapping(value = "/find/all/{userId}", headers = {"Accept=application/json"})
-    private ResponseEntity<List<Payment>> getAllUserPayments(@PathVariable("userID") long userId) {
-        Optional<List<Payment>> optionalPayments = paymentService.getUserPaymentList(userId);
+    @GetMapping(value = "/find/all/{userID}", headers = {"Accept=application/json"})
+    private ResponseEntity<List<Payment>> getAllUserPayments(@PathVariable("userID") long userID) {
+        Optional<List<Payment>> optionalPayments = paymentService.getUserPaymentList(userID);
 
         return optionalPayments.map(payments -> new ResponseEntity<>(payments, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
