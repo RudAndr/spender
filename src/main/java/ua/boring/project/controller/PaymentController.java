@@ -20,11 +20,11 @@ import java.util.Optional;
 @RequestMapping("/payments")
 public class PaymentController {
 
-    private static PaymentService paymentService = null;
+    private final PaymentService paymentService;
 
     @Autowired
     public PaymentController(PaymentService paymentService) {
-        PaymentController.paymentService = paymentService;
+        this.paymentService = paymentService;
     }
 
     @GetMapping(value = "/find/{id}", headers = {"Accept=applications/json"})

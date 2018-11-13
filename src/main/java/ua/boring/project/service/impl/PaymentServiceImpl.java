@@ -23,13 +23,13 @@ import java.util.Optional;
 @Service("paymentService")
 public class PaymentServiceImpl implements PaymentService {
 
-    Logger log = LoggerFactory.getLogger(PaymentServiceImpl.class);
+    private Logger log = LoggerFactory.getLogger(PaymentServiceImpl.class);
 
     @Autowired
-    static PaymentRepo paymentRepository;
+    private PaymentRepo paymentRepository;
 
     @Autowired
-    static UserRepo userRepo;
+    private UserRepo userRepo;
 
     @Override
     public long makePayment(User user, PaymentDto paymentDto) {
