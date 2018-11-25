@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * @author Rudenko Andrey
@@ -31,6 +32,6 @@ public class User {
     @Column(name = "PASSWORD")
     private String password;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "USERS")
-    private Payment payment;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Payment> payments;
 }

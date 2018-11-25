@@ -27,8 +27,8 @@ public class PaymentController {
         this.paymentService = paymentService;
     }
 
-    @GetMapping(value = "/find/{id}", headers = {"Accept=applications/json"})
-    public ResponseEntity<Payment> getPayment(@PathVariable("id") long id) {
+    @GetMapping(value = "/find", headers = {"Accept=applications/json"})
+    public ResponseEntity<Payment> getPayment(@RequestParam("id") long id) {
         Optional<Payment> payment = paymentService.getPayment(id);
 
         if (!payment.isPresent()) {
@@ -44,8 +44,8 @@ public class PaymentController {
         return paymentService.createPayment(paymentDto);
     }
 
-    @GetMapping(value = "/find/all/{userID}", headers = {"Accept=application/json"})
-    private ResponseEntity<List<Payment>> getAllUserPayments(@PathVariable("userID") long userID) {
+    @GetMapping(value = "/find/all", headers = {"Accept=application/json"})
+    public ResponseEntity<List<Payment>> getAllUserPayments(@RequestParam("userID") long userID) {
         Optional<List<Payment>> optionalPayments = paymentService.getUserPaymentList(userID);
 
         return optionalPayments.map(payments -> new ResponseEntity<>(payments, HttpStatus.OK))
