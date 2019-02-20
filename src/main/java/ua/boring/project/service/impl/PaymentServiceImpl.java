@@ -37,6 +37,7 @@ public class PaymentServiceImpl implements PaymentService {
             log.info("User is not present id DB");
             return -1;
         }
+
         Payment payment = new Payment();
         payment.setUser(user);
         payment.setPaymentDate(DateUtils.getCurrentSqlDate());
@@ -58,6 +59,7 @@ public class PaymentServiceImpl implements PaymentService {
 
         if (!currentUser.isPresent()) {
             log.warn("User is null");
+            return -1;
         }
 
         return this.makePayment(currentUser.get(), paymentDto);

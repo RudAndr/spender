@@ -1,8 +1,6 @@
 package ua.boring.project.data.dto;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.math.BigDecimal;
 
@@ -11,9 +9,7 @@ import java.math.BigDecimal;
  * @project project
  */
 
-@EqualsAndHashCode
-@Getter
-@Setter
+@Data
 public class PaymentDto {
 
     private BigDecimal cost;

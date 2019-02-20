@@ -1,8 +1,6 @@
 package ua.boring.project.data.entity;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,10 +10,7 @@ import java.util.List;
  * @project project
  */
 
-@Entity
-@Getter
-@Setter
-@EqualsAndHashCode
+@Data
 @Table(name = "USERS")
 public class User {
 
