@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MainController {
 
     @GetMapping(value = {"/", "/index"}, headers = {"Accept=application/json"})
-    private ResponseEntity index() {
+    public ResponseEntity index() {
         return new ResponseEntity(HttpStatus.OK);
     }
 }

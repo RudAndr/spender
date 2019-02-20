@@ -4,6 +4,7 @@ import ua.boring.project.data.dto.PaymentDto;
 import ua.boring.project.data.entity.Payment;
 import ua.boring.project.data.entity.User;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -12,7 +13,8 @@ import java.util.Optional;
  */
 public interface PaymentService {
 
-    void makePayment(User user, PaymentDto paymentDto);
+    long makePayment(User user, PaymentDto paymentDto);
     Optional<Payment> getPayment(long id);
-
+    long createPayment(PaymentDto paymentDto);
+    Optional<List<Payment>> getUserPaymentList(long userId);
 }
