@@ -1,5 +1,6 @@
 package ua.boring.project.service.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,16 +21,19 @@ import java.util.Optional;
  * @project project
  */
 
+@Slf4j
 @Service("paymentService")
 public class PaymentServiceImpl implements PaymentService {
 
-    private Logger log = LoggerFactory.getLogger(PaymentServiceImpl.class);
+    private final PaymentRepo paymentRepository;
+
+    private final UserRepo userRepo;
 
     @Autowired
-    private PaymentRepo paymentRepository;
-
-    @Autowired
-    private UserRepo userRepo;
+    public PaymentServiceImpl(PaymentRepo paymentRepository, UserRepo userRepo) {
+        this.paymentRepository = paymentRepository;
+        this.userRepo = userRepo;
+    }
 
     @Override
     public long makePayment(User user, PaymentDto paymentDto) {
@@ -44,8 +48,7 @@ public class PaymentServiceImpl implements PaymentService {
         payment.setPaymentDescription(paymentDto.getPaymentDescription());
         payment.setCost(paymentDto.getCost());
 
-        paymentRepository.saveAndFlush(payment);
-        return payment.getId();
+        return paymentRepository.saveAndFlush(payment).getId();
     }
 
     @Override
