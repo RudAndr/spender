@@ -52,7 +52,7 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    public Optional<Payment> getPayment(long id) {
+    public Optional<Payment> getPaymentById(long id) {
         return paymentRepository.findById(id);
     }
 

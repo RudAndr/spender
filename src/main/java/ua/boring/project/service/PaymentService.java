@@ -14,7 +14,7 @@ import java.util.Optional;
 public interface PaymentService {
 
     long makePayment(User user, PaymentDto paymentDto);
-    Optional<Payment> getPayment(long id);
+    Optional<Payment> getPaymentById(long id);
     long createPayment(PaymentDto paymentDto);
     Optional<List<Payment>> getUserPaymentList(long userId);
 }

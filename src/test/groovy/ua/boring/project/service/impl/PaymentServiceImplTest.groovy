@@ -29,7 +29,7 @@ class PaymentServiceImplTest extends BaseTestConfig {
     }
 
     @Test
-    void testMakePayment() {
+    void testSuccessMakePayment() {
         User user = new User().with { res ->
             id = 2
 
@@ -46,6 +46,26 @@ class PaymentServiceImplTest extends BaseTestConfig {
 
 
         Assertions.assertThat(paymentService.makePayment(user, paymentDto)).isEqualTo(0)
+    }
+
+    @Test
+    void testFailedMakePayment() {
+        User user = null
+
+        PaymentDto paymentDto = new PaymentDto().with { result ->
+            cost = 123
+            paymentDescription = "Test"
+            userId
+
+            return result
+        }
+
+        Assertions.assertThat(paymentService.makePayment(user, paymentDto)).isEqualTo(-1)
+    }
+
+    @Test
+    void testSuccessGetPayment() {
+
     }
 
 }

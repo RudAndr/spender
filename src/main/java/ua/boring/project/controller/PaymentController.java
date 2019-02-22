@@ -29,7 +29,7 @@ public class PaymentController {
 
     @GetMapping(value = "/find", headers = {"Accept=applications/json"})
     public ResponseEntity<Payment> getPayment(@RequestParam("id") long id) {
-        Optional<Payment> payment = paymentService.getPayment(id);
+        Optional<Payment> payment = paymentService.getPaymentById(id);
 
         if (!payment.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
