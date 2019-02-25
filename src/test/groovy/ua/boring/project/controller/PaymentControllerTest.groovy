@@ -29,11 +29,9 @@ class PaymentControllerTest extends AbstractControllerTest {
                                                                 .content(inputJson)).andReturn()
 
         int status = mvcResult.getResponse().getStatus()
-
         Assertions.assertEquals(201, status)
 
         String content = mvcResult.getResponse().getContentAsString()
-
         Assertions.assertNotEquals("-1", content)
     }
 
