@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: payment-service
+  freemarker:
+    enabled: false
+  thymeleaf:
+    cache: false
+    prefix: classpath:/payment/templates
+
+server:
+  error:
+    path: /error
+  port: 1222
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
