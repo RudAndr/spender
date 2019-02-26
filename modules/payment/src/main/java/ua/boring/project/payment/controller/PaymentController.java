@@ -1,10 +1,8 @@
 package ua.boring.project.payment.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 import ua.boring.project.payment.data.entity.Payment;
 import ua.boring.project.payment.service.PaymentService;
 
@@ -30,5 +28,10 @@ public class PaymentController {
     @GetMapping("/get")
     public Payment getPaymentById(@RequestParam("paymentId") long paymentId) {
         return paymentService.findById(paymentId);
+    }
+
+    @PostMapping("/create")
+    public HttpStatus createPayment(@RequestBody Payment payment) {
+        return paymentService.createPayment(payment);
     }
 }
