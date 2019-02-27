@@ -3,7 +3,7 @@ package ua.boring.project.config;
 public enum ServiceList {
 
     PAYMENT_SERVICE("payment-service"),
-    RATE_SERVICE("rate-service");
+    RATE_SERVICE("currency-service");
 
     private String serviceName;
 

@@ -1,4 +1,4 @@
-package ua.boring.project.payment.config;
+package ua.boring.project.currencyservice.config;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
@@ -7,8 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 @ComponentScan
-@EntityScan("ua.boring.project.payment.data.entity")
-@EnableJpaRepositories("ua.boring.project.payment.data.repository")
+@EnableJpaRepositories("ua.boring.project.currencyservice.data.repository")
+@EntityScan("ua.boring.project.currencyservice.data.entity")
 public class AppConfig {
-
 }
