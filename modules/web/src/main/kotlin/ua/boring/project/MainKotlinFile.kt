@@ -1,2 +1,0 @@
-package ua.boring.project
-
