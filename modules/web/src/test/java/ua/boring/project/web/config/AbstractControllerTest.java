@@ -1,4 +1,4 @@
-package ua.boring.project.config;
+package ua.boring.project.web.config;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

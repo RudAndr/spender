@@ -1,4 +1,4 @@
-package ua.boring.project;
+package ua.boring.project.web;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

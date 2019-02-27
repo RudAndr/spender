@@ -1,4 +1,4 @@
-package ua.boring.project.config;
+package ua.boring.project.web.config;
 
 public enum ServiceList {
 

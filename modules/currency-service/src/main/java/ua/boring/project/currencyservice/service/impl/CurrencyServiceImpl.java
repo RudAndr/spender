@@ -1,6 +1,7 @@
 package ua.boring.project.currencyservice.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import ua.boring.project.currencyservice.service.CurrencyService;
 import ua.boring.project.currencyservice.data.entity.Currency;
@@ -19,6 +20,12 @@ public class CurrencyServiceImpl implements CurrencyService {
     @Override
     public Currency getCurrencyByName(String currencyName) {
         return currencyRepository.getCurrencyByCurrencyName(currencyName);
+    }
+
+    public HttpStatus createCurrency() {
+
+
+        return HttpStatus.CREATED;
     }
 
 }
