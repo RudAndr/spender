@@ -1,4 +1,4 @@
-package ua.boring.project.currencyservice.parser;
+package ua.boring.project.currencyservice.utils;
 
 import com.google.gson.Gson;
 import org.apache.http.HttpResponse;

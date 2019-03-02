@@ -2,9 +2,7 @@ package ua.boring.project.currencyservice.data.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
@@ -14,6 +12,8 @@ import java.util.List;
 @Data
 public class Currency {
 
+    @Id
+    @GeneratedValue
     private Long id;
 
     private String base;

@@ -8,7 +8,7 @@ spring:
     type: com.mysql.cj.jdbc.MysqlDataSource
     url: jdbc:mysql://localhost:3306/spenderdb?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: root
-    password: testPass
+    password: helz0407
   jpa:
     hibernate:
       naming:

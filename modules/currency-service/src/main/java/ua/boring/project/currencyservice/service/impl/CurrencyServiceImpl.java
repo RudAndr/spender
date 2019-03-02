@@ -2,14 +2,15 @@ package ua.boring.project.currencyservice.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import ua.boring.project.currencyservice.parser.CurrencyParser;
+import ua.boring.project.currencyservice.utils.CurrencyCalculator;
+import ua.boring.project.currencyservice.utils.CurrencyParser;
 import ua.boring.project.currencyservice.service.CurrencyService;
 import ua.boring.project.currencyservice.data.entity.Currency;
 import ua.boring.project.currencyservice.data.repository.CurrencyRepository;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 @Slf4j
 @Service
@@ -28,7 +29,14 @@ public class CurrencyServiceImpl implements CurrencyService {
     }
 
     @Override
-    public Integer createCurrency() {
+    public BigDecimal calculateCurrency(String expectedCurrency, BigDecimal eurMoney) {
+        Currency currency = getLast();
+
+        return CurrencyCalculator.calculatePrice(expectedCurrency, eurMoney, currency);
+    }
+
+    @Override
+    public Integer updateCurrency() {
         int removeStatus = removeLast();
 
         if (removeStatus == -1) {
@@ -46,6 +54,11 @@ public class CurrencyServiceImpl implements CurrencyService {
         }
 
         return 0;
+    }
+
+    @Override
+    public Currency getLast() {
+        return currencyRepository.findTopByOrderByIdDesc();
     }
 
     @Override
