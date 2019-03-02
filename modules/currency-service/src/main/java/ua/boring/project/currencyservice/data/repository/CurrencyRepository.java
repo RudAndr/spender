@@ -5,6 +5,8 @@ import ua.boring.project.currencyservice.data.entity.Currency;
 
 public interface CurrencyRepository extends JpaRepository<Currency, Long> {
 
-    Currency getCurrencyByCurrencyName(String currencyName);
+    Currency getCurrencyByBase(String currencyName);
+
+    Currency findTopByOrderByIdDesc();
 
 }
