@@ -10,11 +10,11 @@ import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
-import ua.boring.project.web.ProjectApplication;
+import ua.boring.project.web.WebServiceApplication;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 //@ContextConfiguration(classes = {AppConfig.class})
-@SpringBootTest(classes = ProjectApplication.class)
+@SpringBootTest(classes = WebServiceApplication.class)
 @TestExecutionListeners({DependencyInjectionTestExecutionListener.class,
         DirtiesContextTestExecutionListener.class,
         TransactionDbUnitTestExecutionListener.class,
