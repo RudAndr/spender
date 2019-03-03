@@ -14,8 +14,9 @@ import java.util.List;
 public class Currency {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "currency_id", unique = true, nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CurrencyIdGenerator")
+    @SequenceGenerator(name = "CurrencyIdGenerator", sequenceName = "SEQ_CURRENCY_ID")
+    @Column(name = "currencyId", unique = true, nullable = false)
     private Long currencyId;
 
     private String base;

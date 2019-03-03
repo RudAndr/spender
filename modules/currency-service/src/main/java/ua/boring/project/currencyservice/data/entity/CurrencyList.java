@@ -14,7 +14,8 @@ import java.util.Date;
 public class CurrencyList {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CurrencyListIdGenerator")
+    @SequenceGenerator(name = "CurrencyListIdGenerator", sequenceName = "SEQ_CURRENCY_LIST_ID")
     private Long id;
 
     @Temporal(TemporalType.TIMESTAMP)

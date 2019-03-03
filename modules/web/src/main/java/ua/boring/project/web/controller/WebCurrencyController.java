@@ -30,10 +30,10 @@ public class WebCurrencyController {
         CurrencyDto internalStatus = webCurrencyService.updateCurrencyRates();
 
         if (internalStatus == null) {
-            return HttpStatus.ACCEPTED;
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
 
-        return HttpStatus.INTERNAL_SERVER_ERROR;
+        return HttpStatus.ACCEPTED;
     }
 
 }

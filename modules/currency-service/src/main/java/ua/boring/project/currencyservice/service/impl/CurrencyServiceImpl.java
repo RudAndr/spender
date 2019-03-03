@@ -22,10 +22,13 @@ import java.util.Map;
 public class CurrencyServiceImpl implements CurrencyService {
 
     private final CurrencyRepository currencyRepository;
+    private final CurrencyListRepository currencyListRepository;
 
     @Autowired
-    public CurrencyServiceImpl(CurrencyRepository currencyRepository) {
+    public CurrencyServiceImpl(CurrencyRepository currencyRepository,
+                               CurrencyListRepository currencyListRepository) {
         this.currencyRepository = currencyRepository;
+        this.currencyListRepository = currencyListRepository;
     }
 
     @Override
@@ -57,6 +60,8 @@ public class CurrencyServiceImpl implements CurrencyService {
             currency.setDate(currencyData.getDate());
 
             List<CurrencyList> currencyLists = new ArrayList<>();
+            result = currencyRepository.save(currency);
+
 
             for (Map.Entry<String, BigDecimal> entry : currencyData.getRates().entrySet()) {
 
@@ -64,13 +69,13 @@ public class CurrencyServiceImpl implements CurrencyService {
                 currencyList.setDate(currencyData.getDate());
                 currencyList.setCurrencyKey(entry.getKey());
                 currencyList.setCurrencyValue(entry.getValue());
+                currencyList.setCurrency(result);
 
                 currencyLists.add(currencyList);
             }
 
-            currency.setRates(currencyLists);
+            currencyListRepository.saveAll(currencyLists);
 
-            result = currencyRepository.save(currency);
         } catch (Exception e) {
             log.debug("Exception while saving new currencies: ", e);
 
