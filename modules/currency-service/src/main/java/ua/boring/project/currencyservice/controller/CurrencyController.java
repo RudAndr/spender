@@ -23,4 +23,9 @@ public class CurrencyController {
         return currencyService.calculateCurrency(currencyCode, eurMoney);
     }
 
+    @GetMapping("/update")
+    public Integer updateCurrencyTable() {
+        return currencyService.updateCurrency();
+    }
+
 }

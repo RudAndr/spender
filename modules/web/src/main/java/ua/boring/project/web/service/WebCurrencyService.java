@@ -5,4 +5,6 @@ import java.math.BigDecimal;
 public interface WebCurrencyService {
 
     BigDecimal findCurrencyRateByCode(String currencyCode, BigDecimal eurMoney);
+
+    Integer updateCurrencyRates();
 }

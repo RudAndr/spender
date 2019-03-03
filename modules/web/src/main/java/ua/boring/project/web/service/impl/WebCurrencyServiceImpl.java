@@ -25,4 +25,9 @@ public class WebCurrencyServiceImpl implements WebCurrencyService {
         return restTemplate.getForObject(SERVICE_URL + "/currency/calc?currencyCode={currencyCode}&eurMoney={eurMoney}", BigDecimal.class, currencyCode, eurMoney);
     }
 
+    @Override
+    public Integer updateCurrencyRates() {
+        return restTemplate.getForObject(SERVICE_URL + "/currency/update", Integer.class);
+    }
+
 }

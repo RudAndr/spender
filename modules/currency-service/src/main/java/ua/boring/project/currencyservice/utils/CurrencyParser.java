@@ -6,6 +6,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
+import ua.boring.project.currencyservice.data.dto.CurrencyDto;
 import ua.boring.project.currencyservice.data.entity.Currency;
 
 import java.io.IOException;

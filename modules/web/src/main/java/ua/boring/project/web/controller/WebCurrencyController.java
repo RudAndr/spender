@@ -1,10 +1,8 @@
 package ua.boring.project.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 import ua.boring.project.web.service.WebCurrencyService;
 
 import java.math.BigDecimal;
@@ -24,6 +22,17 @@ public class WebCurrencyController {
     public BigDecimal calculateCurrency(@RequestParam("currencyCode") String currencyCode,
                                         @RequestParam("eurMoney") BigDecimal eurMoney) {
         return webCurrencyService.findCurrencyRateByCode(currencyCode, eurMoney);
+    }
+
+    @GetMapping("/update")
+    public HttpStatus updateCurrenciesTable() {
+        Integer internalStatus = webCurrencyService.updateCurrencyRates();
+
+        if (internalStatus == 0) {
+            return HttpStatus.ACCEPTED;
+        }
+
+        return HttpStatus.INTERNAL_SERVER_ERROR;
     }
 
 }
