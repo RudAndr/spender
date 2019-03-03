@@ -12,8 +12,9 @@ import ua.boring.project.currencyservice.service.CurrencyService;
 import ua.boring.project.currencyservice.data.entity.Currency;
 import ua.boring.project.currencyservice.data.repository.CurrencyRepository;
 
-import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -21,14 +22,10 @@ import java.util.Map;
 public class CurrencyServiceImpl implements CurrencyService {
 
     private final CurrencyRepository currencyRepository;
-//    private final CurrencyListRepository currencyListRepository;
 
     @Autowired
-    public CurrencyServiceImpl(CurrencyRepository currencyRepository
-//                               CurrencyListRepository currencyListRepository
-    ) {
+    public CurrencyServiceImpl(CurrencyRepository currencyRepository) {
         this.currencyRepository = currencyRepository;
-//        this.currencyListRepository = currencyListRepository;
     }
 
     @Override
@@ -44,43 +41,48 @@ public class CurrencyServiceImpl implements CurrencyService {
     }
 
     @Override
-    public Integer updateCurrency() {
+    public Currency updateCurrency() {
         int removeStatus = removeLast();
+        Currency result;
 
         if (removeStatus == -1) {
-            return -1;
+            return null;
         }
 
         try {
-            Currency currencyData = CurrencyParser.getCurrencies();
-//
-//            Currency currency = new Currency();
-//            currency.setBase(currencyData.getBase());
-//            currency.setDate(currencyData.getDate());
-//
-//            for (Map.Entry<String, BigDecimal> entry : currencyData.getRates().entrySet()) {
-//
-//                CurrencyList currencyList = new CurrencyList();
-//                currencyList.setDate(currencyData.getDate());
-//                currencyList.setCurrencyKey(entry.getKey());
-//                currencyList.setCurrencyValue(entry.getValue());
-//
-//                currencyListRepository.save(currencyList);
-//            }
+            CurrencyDto currencyData = CurrencyParser.getCurrencies();
 
-            currencyRepository.save(currencyData);
+            Currency currency = new Currency();
+            currency.setBase(currencyData.getBase());
+            currency.setDate(currencyData.getDate());
+
+            List<CurrencyList> currencyLists = new ArrayList<>();
+
+            for (Map.Entry<String, BigDecimal> entry : currencyData.getRates().entrySet()) {
+
+                CurrencyList currencyList = new CurrencyList();
+                currencyList.setDate(currencyData.getDate());
+                currencyList.setCurrencyKey(entry.getKey());
+                currencyList.setCurrencyValue(entry.getValue());
+
+                currencyLists.add(currencyList);
+            }
+
+            currency.setRates(currencyLists);
+
+            result = currencyRepository.save(currency);
         } catch (Exception e) {
             log.debug("Exception while saving new currencies: ", e);
 
-            return -1;
+            return null;
         }
 
-        return 0;
+        return result;
     }
 
     @Override
     public Currency getLast() {
-        return currencyRepository.findTopByOrderByIdDesc();
+        return currencyRepository.findTopByOrderByCurrencyIdDesc();
     }
 
     @Override

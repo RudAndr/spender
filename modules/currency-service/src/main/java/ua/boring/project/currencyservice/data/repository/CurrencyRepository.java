@@ -8,6 +8,6 @@ public interface CurrencyRepository extends JpaRepository<Currency, Long> {
 
     Currency getCurrencyByBase(String currencyName);
 
-    Currency findTopByOrderByIdDesc();
+    Currency findTopByOrderByCurrencyIdDesc();
 
 }

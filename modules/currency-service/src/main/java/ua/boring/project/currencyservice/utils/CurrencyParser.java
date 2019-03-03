@@ -23,7 +23,7 @@ public class CurrencyParser {
         resultUrl = BASE_URL+ACCESS_KEY;
     }
 
-    public static Currency getCurrencies() throws IOException {
+    public static CurrencyDto getCurrencies() throws IOException {
         HttpClient client = HttpClientBuilder.create().build();
 
         HttpGet request = new HttpGet(resultUrl);
@@ -34,7 +34,7 @@ public class CurrencyParser {
 
         String resultJson = EntityUtils.toString(response.getEntity());
 
-        return new Gson().fromJson(resultJson, Currency.class);
+        return new Gson().fromJson(resultJson, CurrencyDto.class);
     }
 
 }

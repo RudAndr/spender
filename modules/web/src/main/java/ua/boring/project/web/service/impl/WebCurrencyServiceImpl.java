@@ -6,6 +6,7 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import ua.boring.project.web.config.ServiceList;
+import ua.boring.project.web.data.CurrencyDto;
 import ua.boring.project.web.service.WebCurrencyService;
 
 import java.math.BigDecimal;
@@ -26,8 +27,8 @@ public class WebCurrencyServiceImpl implements WebCurrencyService {
     }
 
     @Override
-    public Integer updateCurrencyRates() {
-        return restTemplate.getForObject(SERVICE_URL + "/currency/update", Integer.class);
+    public CurrencyDto updateCurrencyRates() {
+        return restTemplate.getForObject(SERVICE_URL + "/currency/update", CurrencyDto.class);
     }
 
 }

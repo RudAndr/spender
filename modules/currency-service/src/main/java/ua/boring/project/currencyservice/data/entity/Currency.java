@@ -10,17 +10,20 @@ import java.util.List;
 
 @Entity
 @Data
+@Table(name = "currency")
 public class Currency {
 
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "currency_id", unique = true, nullable = false)
+    private Long currencyId;
 
     private String base;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
-    private HashMap<String, BigDecimal> rates;
+    @OneToMany(mappedBy = "currency", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<CurrencyList> rates;
 
 }

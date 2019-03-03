@@ -3,6 +3,7 @@ package ua.boring.project.web.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import ua.boring.project.web.data.CurrencyDto;
 import ua.boring.project.web.service.WebCurrencyService;
 
 import java.math.BigDecimal;
@@ -26,9 +27,9 @@ public class WebCurrencyController {
 
     @GetMapping("/update")
     public HttpStatus updateCurrenciesTable() {
-        Integer internalStatus = webCurrencyService.updateCurrencyRates();
+        CurrencyDto internalStatus = webCurrencyService.updateCurrencyRates();
 
-        if (internalStatus == 0) {
+        if (internalStatus == null) {
             return HttpStatus.ACCEPTED;
         }
 

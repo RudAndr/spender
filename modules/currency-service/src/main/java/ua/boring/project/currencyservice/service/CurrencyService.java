@@ -10,7 +10,7 @@ public interface CurrencyService {
 
     BigDecimal calculateCurrency(String expectedCurrency, BigDecimal eurMoney);
 
-    Integer updateCurrency();
+    Currency updateCurrency();
 
     Currency getLast();
 
