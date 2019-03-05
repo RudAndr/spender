@@ -7,11 +7,11 @@ import org.mockito.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import ua.boring.project.currencyservice.data.repository.CurrencyListRepository;
 import ua.boring.project.currencyservice.data.repository.CurrencyRepository;
-import ua.boring.project.currencyservice.config.BaseTestConfig;
+import ua.boring.project.currencyservice.config.CommonTest;
 
 import java.math.BigDecimal;
 
-public class CurrencyServiceImplTest extends BaseTestConfig {
+public class CurrencyServiceImplTest extends CommonTest {
 
     @InjectMocks
     private CurrencyServiceImpl currencyService;

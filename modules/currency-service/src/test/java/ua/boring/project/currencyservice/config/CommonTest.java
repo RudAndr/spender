@@ -21,7 +21,7 @@ import ua.boring.project.currencyservice.CurrencyServiceApplication;
         TransactionDbUnitTestExecutionListener.class,
         DbUnitTestExecutionListener.class})
 @ActiveProfiles("test")
-public class BaseTestConfig extends Assert {
+public class CommonTest extends Assert {
 
     @Before
     public void setUp() throws Exception {
