@@ -6,7 +6,6 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
 
 @Data
 @Entity
@@ -17,9 +16,6 @@ public class CurrencyList {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CurrencyListIdGenerator")
     @SequenceGenerator(name = "CurrencyListIdGenerator", sequenceName = "SEQ_CURRENCY_LIST_ID")
     private Long id;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date date;
 
     private String currencyKey;
 

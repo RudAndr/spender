@@ -45,8 +45,9 @@ public class CurrencyServiceImpl implements CurrencyService {
 
     @Override
     public Currency updateCurrency() {
-        int removeStatus = removeLast();
         Currency result;
+
+        int removeStatus = removeLast();
 
         if (removeStatus == -1) {
             return null;
@@ -66,7 +67,6 @@ public class CurrencyServiceImpl implements CurrencyService {
             for (Map.Entry<String, BigDecimal> entry : currencyData.getRates().entrySet()) {
 
                 CurrencyList currencyList = new CurrencyList();
-                currencyList.setDate(currencyData.getDate());
                 currencyList.setCurrencyKey(entry.getKey());
                 currencyList.setCurrencyValue(entry.getValue());
                 currencyList.setCurrency(result);
