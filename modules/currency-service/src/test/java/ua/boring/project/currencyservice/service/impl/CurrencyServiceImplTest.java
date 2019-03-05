@@ -1,4 +1,4 @@
-package ua.boring.project.rateservice.service.impl;
+package ua.boring.project.currencyservice.service.impl;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
@@ -7,8 +7,9 @@ import org.mockito.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import ua.boring.project.currencyservice.data.repository.CurrencyListRepository;
 import ua.boring.project.currencyservice.data.repository.CurrencyRepository;
-import ua.boring.project.currencyservice.service.impl.CurrencyServiceImpl;
-import ua.boring.project.rateservice.config.BaseTestConfig;
+import ua.boring.project.currencyservice.config.BaseTestConfig;
+
+import java.math.BigDecimal;
 
 public class CurrencyServiceImplTest extends BaseTestConfig {
 
@@ -37,6 +38,15 @@ public class CurrencyServiceImplTest extends BaseTestConfig {
     public void deleteCurrencyTest() {
 
         Assertions.assertThat(currencyService.removeLast()).isNotEqualTo(-1);
+    }
+
+    @Test
+    public void calculateCurrencyTest() {
+        String expectedCurrency = "UAH";
+        BigDecimal uahMoney = new BigDecimal(26);
+        currencyService.updateCurrency();
+
+        Assertions.assertThat(currencyService.calculateCurrency(expectedCurrency, uahMoney)).isNotEqualTo(uahMoney);
     }
 
 }

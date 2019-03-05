@@ -10,7 +10,7 @@ public class CurrencyCalculator {
 
     public static BigDecimal calculatePrice(String expectedCurrency, BigDecimal eurMoney, Currency currentCurrency) {
 
-        Optional<CurrencyList> currencyList = currentCurrency.getRates().stream().findFirst().filter(currency -> currency.getCurrencyKey().equals(expectedCurrency));
+        Optional<CurrencyList> currencyList = currentCurrency.getRates().stream().filter(currency -> currency.getCurrencyKey().equals(expectedCurrency)).findFirst();
 
         if (currencyList.isPresent()) {
             BigDecimal currencyEurPrice = currencyList.get().getCurrencyValue();

@@ -1,4 +1,4 @@
-package ua.boring.project.rateservice;
+package ua.boring.project.currencyservice;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

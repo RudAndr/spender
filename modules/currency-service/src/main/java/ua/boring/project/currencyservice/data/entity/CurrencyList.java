@@ -26,4 +26,13 @@ public class CurrencyList {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Currency currency;
 
+    @Override
+    public String toString() {
+        return "CurrencyList{" +
+                "id=" + id +
+                ", currencyKey='" + currencyKey + '\'' +
+                ", currencyValue=" + currencyValue +
+                ", currency=" + currency.getCurrencyId() +
+                '}';
+    }
 }

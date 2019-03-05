@@ -1,4 +1,4 @@
-package ua.boring.project.rateservice.config;
+package ua.boring.project.currencyservice.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import ua.boring.project.currencyservice.data.repository.CurrencyRepository;
 
 import javax.sql.DataSource;
 

@@ -1,4 +1,4 @@
-package ua.boring.project.rateservice.config;
+package ua.boring.project.currencyservice.config;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.TransactionDbUnitTestExecutionListener;
