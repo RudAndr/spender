@@ -51,4 +51,15 @@ public class CurrencyControllerTest extends CommonTest {
         mockMvc.perform(get("/currency/update")).andExpect(status().isOk());
     }
 
+    @Test
+    public void calculateCurrencyTest() throws Exception {
+        String currencyCode = "UAH";
+        BigDecimal eurMoney = new BigDecimal(15);
+
+        mockMvc.perform(get("/currency/calc")
+                .param("currencyCode", currencyCode)
+                .param("eurMoney", String.valueOf(eurMoney)))
+                .andExpect(status().isOk());
+    }
+
 }

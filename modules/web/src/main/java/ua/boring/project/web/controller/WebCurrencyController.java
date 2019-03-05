@@ -25,6 +25,7 @@ public class WebCurrencyController {
         return webCurrencyService.findCurrencyRateByCode(currencyCode, eurMoney);
     }
 
+    //todo: TEST IT AS SOON AS POSSIBLE
     @GetMapping("/update")
     public HttpStatus updateCurrenciesTable() {
         CurrencyDto internalStatus = webCurrencyService.updateCurrencyRates();
