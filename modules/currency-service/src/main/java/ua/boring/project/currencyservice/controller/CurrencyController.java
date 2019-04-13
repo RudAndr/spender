@@ -2,6 +2,7 @@ package ua.boring.project.currencyservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import ua.boring.project.currencyservice.data.dto.CurrencyResult;
 import ua.boring.project.currencyservice.data.entity.Currency;
 import ua.boring.project.currencyservice.service.CurrencyService;
 
@@ -18,13 +19,13 @@ public class CurrencyController {
         this.currencyService = currencyService;
     }
 
-    @GetMapping("/")
-    public BigDecimal calculateCurrency(@RequestParam("currencyCode") String currencyCode,
-                                           @RequestParam("eurMoney") String eurMoney) {
+    @GetMapping("/calc")
+    public CurrencyResult calculateCurrency(@RequestParam("currencyCode") String currencyCode,
+                                            @RequestParam("eurMoney") String eurMoney) {
         return currencyService.calculateCurrency(currencyCode, new BigDecimal(eurMoney));
     }
 
-    @PatchMapping("/")
+    @GetMapping("/update")
     public Currency updateCurrencyTable() {
 
         return currencyService.updateCurrency();

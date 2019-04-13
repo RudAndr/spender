@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.boring.project.currencyservice.data.dto.CurrencyDto;
+import ua.boring.project.currencyservice.data.dto.CurrencyResult;
 import ua.boring.project.currencyservice.data.entity.CurrencyList;
 import ua.boring.project.currencyservice.data.repository.CurrencyListRepository;
 import ua.boring.project.currencyservice.utils.CurrencyCalculator;
@@ -37,10 +38,12 @@ public class CurrencyServiceImpl implements CurrencyService {
     }
 
     @Override
-    public BigDecimal calculateCurrency(String expectedCurrency, BigDecimal eurMoney) {
+    public CurrencyResult calculateCurrency(String expectedCurrency, BigDecimal eurMoney) {
         Currency currency = getLast();
 
-        return CurrencyCalculator.calculatePrice(expectedCurrency, eurMoney, currency);
+        BigDecimal parsedPrice = CurrencyCalculator.calculatePrice(expectedCurrency, eurMoney, currency);
+
+        return new CurrencyResult(expectedCurrency, parsedPrice);
     }
 
     @Override

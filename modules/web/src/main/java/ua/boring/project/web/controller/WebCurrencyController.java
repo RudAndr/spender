@@ -25,6 +25,12 @@ public class WebCurrencyController {
         return webCurrencyService.findCurrencyRateByCode(currencyCode, eurMoney);
     }
 
+    /** manual updating currency base
+     * APP-ADMIN only
+     *
+     **/
+
+    //todo APP-ADMIN ROLE
     //todo: TEST IT AS SOON AS POSSIBLE
     @GetMapping("/update")
     public HttpStatus updateCurrenciesTable() {
