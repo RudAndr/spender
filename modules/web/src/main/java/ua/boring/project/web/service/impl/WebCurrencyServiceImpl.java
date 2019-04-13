@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import ua.boring.project.commons.data.CurrencyResult;
 import ua.boring.project.web.config.ServiceList;
 import ua.boring.project.web.data.CurrencyDto;
 import ua.boring.project.web.service.WebCurrencyService;
@@ -22,8 +23,8 @@ public class WebCurrencyServiceImpl implements WebCurrencyService {
     private RestTemplate restTemplate;
 
     @Override
-    public BigDecimal findCurrencyRateByCode(String currencyCode, BigDecimal eurMoney) {
-        return restTemplate.getForObject(SERVICE_URL + "/currency/calc?currencyCode={currencyCode}&eurMoney={eurMoney}", BigDecimal.class, currencyCode, eurMoney);
+    public CurrencyResult findCurrencyRateByCode(String currencyCode, BigDecimal eurMoney) {
+        return restTemplate.getForObject(SERVICE_URL + "/currency/calc?currencyCode={currencyCode}&eurMoney={eurMoney}", CurrencyResult.class, currencyCode, eurMoney);
     }
 
     @Override

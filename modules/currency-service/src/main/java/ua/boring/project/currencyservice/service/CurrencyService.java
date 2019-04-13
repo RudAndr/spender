@@ -1,6 +1,6 @@
 package ua.boring.project.currencyservice.service;
 
-import ua.boring.project.currencyservice.data.dto.CurrencyResult;
+import ua.boring.project.commons.data.CurrencyResult;
 import ua.boring.project.currencyservice.data.entity.Currency;
 
 import java.math.BigDecimal;

@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.boring.project.currencyservice.data.dto.CurrencyDto;
-import ua.boring.project.currencyservice.data.dto.CurrencyResult;
+import ua.boring.project.commons.data.CurrencyResult;
 import ua.boring.project.currencyservice.data.entity.CurrencyList;
 import ua.boring.project.currencyservice.data.repository.CurrencyListRepository;
 import ua.boring.project.currencyservice.utils.CurrencyCalculator;

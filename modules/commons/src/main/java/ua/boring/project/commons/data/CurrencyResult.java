@@ -1,4 +1,5 @@
-package ua.boring.project.currencyservice.data.dto;
+package ua.boring.project.commons.data;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
