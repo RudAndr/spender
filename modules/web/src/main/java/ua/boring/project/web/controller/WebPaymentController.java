@@ -2,6 +2,7 @@ package ua.boring.project.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,15 +23,13 @@ public class WebPaymentController {
         this.webPaymentService = webPaymentService;
     }
 
-    @PostMapping("/create")
-    public String makePayment(@RequestBody PaymentDto paymentCriteria) {
+    @PostMapping("/")
+    public ResponseEntity<PaymentDto> makePayment(@RequestBody PaymentDto paymentCriteria) {
         Optional<PaymentDto> paymentDto = webPaymentService.makePayment(paymentCriteria);
 
-        if (paymentDto.isPresent()) {
-            return HttpStatus.CREATED.toString();
-        }
+        return paymentDto.map(dto -> new ResponseEntity<>(dto, HttpStatus.CREATED))
+                         .orElseGet(() -> new ResponseEntity<>(HttpStatus.BAD_REQUEST));
 
-        return HttpStatus.EXPECTATION_FAILED.toString();
     }
 
 }
