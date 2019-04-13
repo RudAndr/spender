@@ -19,19 +19,19 @@ public class PaymentController {
         this.paymentService = paymentService;
     }
 
-    @GetMapping("/all")
+    @GetMapping("/")
     public List<Payment> getAllPayments(@RequestParam("userId") long userId) {
 
         return paymentService.findAllByUserId(userId);
     }
 
-    @GetMapping("/get")
-    public Payment getPaymentById(@RequestParam("paymentId") long paymentId) {
+    @GetMapping("/{paymentId}")
+    public Payment getPaymentById(@PathVariable("paymentId") long paymentId) {
         return paymentService.findById(paymentId);
     }
 
-    @PostMapping("/create")
-    public HttpStatus createPayment(@RequestBody Payment payment) {
+    @PostMapping("/")
+    public Payment createPayment(@RequestBody Payment payment) {
         return paymentService.createPayment(payment);
     }
 }

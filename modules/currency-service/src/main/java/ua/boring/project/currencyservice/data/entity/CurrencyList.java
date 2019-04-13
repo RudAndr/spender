@@ -5,12 +5,15 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Data
 @Entity
 @Table(name = "currency_list")
-public class CurrencyList {
+public class CurrencyList implements Serializable {
+
+    private static final long serialVersionUID = 8974269148562444368L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CurrencyListIdGenerator")

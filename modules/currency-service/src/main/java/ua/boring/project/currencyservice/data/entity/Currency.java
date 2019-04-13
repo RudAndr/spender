@@ -3,6 +3,7 @@ package ua.boring.project.currencyservice.data.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
@@ -11,7 +12,9 @@ import java.util.List;
 @Entity
 @Data
 @Table(name = "currency")
-public class Currency {
+public class Currency implements Serializable {
+
+    private static final long serialVersionUID = 3950067947180188148L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CurrencyIdGenerator")

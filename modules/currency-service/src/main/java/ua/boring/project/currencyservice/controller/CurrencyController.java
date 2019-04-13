@@ -18,13 +18,13 @@ public class CurrencyController {
         this.currencyService = currencyService;
     }
 
-    @GetMapping("/calc")
+    @GetMapping("/")
     public BigDecimal calculateCurrency(@RequestParam("currencyCode") String currencyCode,
                                            @RequestParam("eurMoney") String eurMoney) {
         return currencyService.calculateCurrency(currencyCode, new BigDecimal(eurMoney));
     }
 
-    @GetMapping("/update")
+    @PatchMapping("/")
     public Currency updateCurrencyTable() {
 
         return currencyService.updateCurrency();

@@ -1,6 +1,5 @@
 package ua.boring.project.payment.service;
 
-import org.springframework.http.HttpStatus;
 import ua.boring.project.payment.data.entity.Payment;
 
 import java.util.List;
@@ -11,5 +10,5 @@ public interface PaymentService {
 
     Payment findById(long id);
 
-    HttpStatus createPayment(Payment payment);
+    Payment createPayment(Payment payment);
 }

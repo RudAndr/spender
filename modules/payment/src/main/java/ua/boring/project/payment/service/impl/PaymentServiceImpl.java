@@ -33,9 +33,9 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    public HttpStatus createPayment(Payment payment) {
+    public Payment createPayment(Payment payment) {
         if (payment.getUserId() == null) {
-            return HttpStatus.BAD_REQUEST;
+            return null;
         }
 
         Payment newPayment = new Payment();
@@ -43,8 +43,6 @@ public class PaymentServiceImpl implements PaymentService {
         newPayment.setDescription(payment.getDescription());
         newPayment.setUserId(payment.getUserId());
 
-        paymentRepository.saveAndFlush(newPayment);
-
-        return HttpStatus.CREATED;
+        return paymentRepository.saveAndFlush(newPayment);
     }
 }
