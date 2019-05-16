@@ -2,12 +2,14 @@ package ua.boring.project.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ua.boring.project.commons.data.CurrencyResult;
 import ua.boring.project.web.data.CurrencyDto;
 import ua.boring.project.web.service.WebCurrencyService;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/currency")
@@ -34,9 +36,11 @@ public class WebCurrencyController {
     //todo APP-ADMIN ROLE
     //todo: TEST IT AS SOON AS POSSIBLE
     @GetMapping("/update")
-    public CurrencyDto updateCurrenciesTable() {
+    public ResponseEntity<CurrencyDto> updateCurrenciesTable() {
+        Optional<CurrencyDto> currencyResult = Optional.ofNullable(webCurrencyService.updateCurrencyRates());
 
-        return webCurrencyService.updateCurrencyRates();
+        return currencyResult.map(currencyDto -> new ResponseEntity<>(currencyDto, HttpStatus.OK))
+                             .orElseGet(() -> new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
 
 }
