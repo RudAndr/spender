@@ -7,10 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ua.boring.project.web.data.PaymentDto;
+import ua.boring.project.commons.data.PaymentDto;
 import ua.boring.project.web.service.WebPaymentService;
-
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/payment")

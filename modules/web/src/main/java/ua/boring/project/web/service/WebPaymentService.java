@@ -1,6 +1,6 @@
 package ua.boring.project.web.service;
 
-import ua.boring.project.web.data.PaymentDto;
+import ua.boring.project.commons.data.PaymentDto;
 
 import java.util.Optional;
 
