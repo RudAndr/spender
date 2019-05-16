@@ -25,10 +25,9 @@ public class WebPaymentController {
 
     @PostMapping("/")
     public ResponseEntity<PaymentDto> makePayment(@RequestBody PaymentDto paymentCriteria) {
-        Optional<PaymentDto> paymentDto = webPaymentService.makePayment(paymentCriteria);
-
-        return paymentDto.map(dto -> new ResponseEntity<>(dto, HttpStatus.CREATED))
-                         .orElseGet(() -> new ResponseEntity<>(HttpStatus.BAD_REQUEST));
+        return webPaymentService.makePayment(paymentCriteria)
+                                .map(dto -> new ResponseEntity<>(dto, HttpStatus.CREATED))
+                                .orElseGet(() -> new ResponseEntity<>(HttpStatus.BAD_REQUEST));
 
     }
 
