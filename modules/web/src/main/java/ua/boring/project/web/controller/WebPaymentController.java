@@ -23,7 +23,7 @@ public class WebPaymentController {
         this.webPaymentService = webPaymentService;
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<PaymentDto> makePayment(@RequestBody PaymentDto paymentCriteria) {
         return webPaymentService.makePayment(paymentCriteria)
                                 .map(dto -> new ResponseEntity<>(dto, HttpStatus.CREATED))
