@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import ua.boring.project.currencyservice.data.entity.Currency;
 import ua.boring.project.currencyservice.service.CurrencyService;
 
 @Slf4j
@@ -19,8 +20,9 @@ public class CurrencyUpdateScheduler {
 
     @Scheduled(cron = "* 0 8 * * *")
     public void updateCurrency() {
-        log.info("Updating currencies in Database: ");
-        currencyService.updateCurrency();
+        Currency currency = currencyService.updateCurrency();
+
+        log.info("Updating currencies in Database: {}", currency);
     }
 
 }
