@@ -34,14 +34,9 @@ public class WebCurrencyController {
     //todo APP-ADMIN ROLE
     //todo: TEST IT AS SOON AS POSSIBLE
     @GetMapping("/update")
-    public HttpStatus updateCurrenciesTable() {
-        CurrencyDto internalStatus = webCurrencyService.updateCurrencyRates();
+    public CurrencyDto updateCurrenciesTable() {
 
-        if (internalStatus == null) {
-            return HttpStatus.NO_CONTENT;
-        }
-
-        return HttpStatus.OK;
+        return webCurrencyService.updateCurrencyRates();
     }
 
 }
