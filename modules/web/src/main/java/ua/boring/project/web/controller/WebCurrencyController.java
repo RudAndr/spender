@@ -37,10 +37,9 @@ public class WebCurrencyController {
     //todo: TEST IT AS SOON AS POSSIBLE
     @GetMapping("/update")
     public ResponseEntity<CurrencyDto> updateCurrenciesTable() {
-        Optional<CurrencyDto> currencyResult = Optional.ofNullable(webCurrencyService.updateCurrencyRates());
-
-        return currencyResult.map(currencyDto -> new ResponseEntity<>(currencyDto, HttpStatus.OK))
-                             .orElseGet(() -> new ResponseEntity<>(HttpStatus.NO_CONTENT));
+        return Optional.ofNullable(webCurrencyService.updateCurrencyRates())
+                       .map(currencyDto -> new ResponseEntity<>(currencyDto, HttpStatus.OK))
+                       .orElseGet(() -> new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
 
 }
