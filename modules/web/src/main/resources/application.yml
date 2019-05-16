@@ -6,7 +6,7 @@ spring:
     prefix: classpath:/web/templates
   datasource:
     url: jdbc:postgresql://localhost:5432/spenderdb?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: andrey
+    username: postgres
     password: helz0407
     driver-class-name: org.postgresql.Driver
   jpa:
