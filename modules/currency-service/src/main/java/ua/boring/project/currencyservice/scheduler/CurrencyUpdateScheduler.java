@@ -10,8 +10,12 @@ import ua.boring.project.currencyservice.service.CurrencyService;
 @Component
 public class CurrencyUpdateScheduler {
 
+    private final CurrencyService currencyService;
+
     @Autowired
-    private CurrencyService currencyService;
+    public CurrencyUpdateScheduler(CurrencyService currencyService) {
+        this.currencyService = currencyService;
+    }
 
     @Scheduled(cron = "* 0 8 * * *")
     public void updateCurrency() {
